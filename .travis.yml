@@ -28,9 +28,9 @@ android:
 #   - adb shell input keyevent 82 &
   
 script:
-  - ./gradlew :lib:assembleDebug
-  - ./gradlew :lib:assembleRelease
-  - ./gradlew :lib:jacocoTestReportDebug coveralls
+  - ./gradlew :rxfilepicker:assembleDebug
+  - ./gradlew :rxfilepicker:assembleRelease
+#  - ./gradlew :rxfilepicker:jacocoTestReportDebug coveralls
 #  - ./gradlew testDebugUnitTest
 #  - ./gradlew createDebugCoverageReport coveralls
 #  - ./gradlew connectedAndroidTest coveralls
