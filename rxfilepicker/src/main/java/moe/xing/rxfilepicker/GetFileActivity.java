@@ -65,7 +65,8 @@ public class GetFileActivity extends Activity {
      * 获取文件
      */
     private void doGet() {
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
         if (!getIntent().getBooleanExtra(IS_SINGLE, true)) {
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
