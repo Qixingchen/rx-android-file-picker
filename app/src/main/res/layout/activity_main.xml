@@ -12,6 +12,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/type_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*/*"
+            tools:ignore="HardcodedText"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

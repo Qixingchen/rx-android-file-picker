@@ -2,11 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.sdk_version
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "moe.xing.rxandroidfilepicker"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion rootProject.ext.sdk_version
         versionCode 1
         versionName "1.0"
@@ -38,7 +37,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
-    compile 'com.github.Qixingchen:RV-Utils:V1.1.4'
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation 'com.github.Qixingchen:RV-Utils:V1.1.5'
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }

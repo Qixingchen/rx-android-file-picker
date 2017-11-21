@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         RxView.clicks(mBinding.single).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                RxGetFile.newBuilder().isSingle(true).build().subscribe(fileSubscriber);
+                RxGetFile.newBuilder().isSingle(true).type(mBinding.typeTxt.getText().toString()).build().subscribe(fileSubscriber);
             }
         });
 
         RxView.clicks(mBinding.multiple).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                RxGetFile.newBuilder().isSingle(false).build().subscribe(fileSubscriber);
+                RxGetFile.newBuilder().isSingle(false).type(mBinding.typeTxt.getText().toString()).build().subscribe(fileSubscriber);
             }
         });
 

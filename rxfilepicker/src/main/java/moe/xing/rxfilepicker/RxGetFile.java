@@ -89,7 +89,7 @@ public class RxGetFile {
                     }
                     //add intent
                     Intent intent = GetFileActivity.getStartIntent(Init.getApplication(), i,
-                            builder.isSingle, builder.maxCount);
+                            builder.isSingle, builder.maxCount, builder.type);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Init.getApplication().startActivity(intent);
                     mSubscribers.append(i, subscriber);
@@ -102,10 +102,12 @@ public class RxGetFile {
 
         private boolean isSingle;
         private int maxCount;
+        private String type;
 
         public Builder() {
             isSingle = true;
             maxCount = Integer.MAX_VALUE;
+            type = "*/*";
         }
 
         @NonNull
@@ -117,6 +119,12 @@ public class RxGetFile {
         @NonNull
         public Builder maxCount(int val) {
             maxCount = val;
+            return this;
+        }
+
+        @NonNull
+        public Builder type(String val) {
+            type = val;
             return this;
         }
 

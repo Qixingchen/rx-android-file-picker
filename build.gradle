@@ -7,11 +7,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
 
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1'
-        classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.6.0'
+        classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.9.0'
     }
 }
 
@@ -28,7 +28,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibraryVersion = '25.4.0'
-    sdk_version = 25
-    buildToolsVersion = "25.0.3"
+    supportLibraryVersion = '26.0.2'
+    sdk_version = 26
 }

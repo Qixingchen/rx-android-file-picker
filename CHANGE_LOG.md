@@ -1,3 +1,7 @@
+### V1.1.0
+允许传入 type  
+更新gradle
+
 ### V1.0.3
 更改拾取方式为 ACTION_GET_CONTENT 以获得更多的应用支持
 并添加 intent.addCategory(Intent.CATEGORY_OPENABLE); 排除无效的选项(例如联系人和时区)

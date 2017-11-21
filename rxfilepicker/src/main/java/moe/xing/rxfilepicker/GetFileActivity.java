@@ -15,6 +15,7 @@ import java.util.Locale;
 
 import moe.xing.baseutils.Init;
 import moe.xing.baseutils.utils.IntentUtils;
+import moe.xing.baseutils.utils.TextHelper;
 import moe.xing.rx_utils.RxFileUtils;
 import rx.Observable;
 import rx.Subscriber;
@@ -32,6 +33,7 @@ public class GetFileActivity extends Activity {
     private static final String SUBSCRIBER_ID = "SubscriberID";
     private static final String IS_SINGLE = "IS_SINGLE";
     private static final String MAX_COUNT = "MAX_COUNT";
+    private static final String TYPE = "TYPE";
 
     /**
      * 获取启动 Intent
@@ -40,11 +42,12 @@ public class GetFileActivity extends Activity {
      * @param subscriberID subscriberID
      */
     public static Intent getStartIntent(Context context, int subscriberID,
-                                        boolean isSingle, int maxCount) {
+                                        boolean isSingle, int maxCount, String type) {
         Intent intent = new Intent(context, GetFileActivity.class);
         intent.putExtra(SUBSCRIBER_ID, subscriberID);
         intent.putExtra(IS_SINGLE, isSingle);
         intent.putExtra(MAX_COUNT, maxCount);
+        intent.putExtra(TYPE, type);
         return intent;
     }
 
@@ -65,13 +68,17 @@ public class GetFileActivity extends Activity {
      * 获取文件
      */
     private void doGet() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*/*");
-        if (!getIntent().getBooleanExtra(IS_SINGLE, true)) {
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        Intent getFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        getFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        String type = getIntent().getStringExtra(TYPE);
+        if (!TextHelper.isVisible(type)) {
+            type = "*/*";
         }
-        IntentUtils.startIntentForResult(intent, this, GET_FILE_REQUEST_CODE);
+        getFileIntent.setType(type);
+        if (!getIntent().getBooleanExtra(IS_SINGLE, true)) {
+            getFileIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        }
+        IntentUtils.startIntentForResult(getFileIntent, this, GET_FILE_REQUEST_CODE);
     }
 
     @Override
